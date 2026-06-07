@@ -1,11 +1,8 @@
-import Image from "next/image";
-
 const Logo = () => {
   return (
-    <div className="flex items-center gap-2">
-      <Image src="/logo.webp" alt="Logo" width={30} height={30} className="rounded-md" />
-      <h1 className="text-xl">Sklep AGD</h1>
-    </div>
+    <span className="text-2xl font-serif tracking-widest text-foreground font-medium transition-opacity hover:opacity-80">
+      Maison
+    </span>
   );
 };
 
