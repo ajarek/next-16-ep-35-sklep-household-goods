@@ -4,7 +4,7 @@ import { ArrowRight } from "lucide-react"
 
 const FeaturedCollection = () => {
   return (
-    <section className=' w-full min-h-[calc(100vh-80px)]  overflow-hidden grid grid-cols-1 md:grid-cols-2 gap-4 bg-background p-8'>
+    <section className=' w-full min-h-[calc(100vh-80px)]  overflow-hidden grid grid-cols-1 md:grid-cols-2 gap-4 bg-background px-8 pt-20 '>
       {/* Background Image */}
       <div className='relative z-0 w-full h-[400px] md:h-full'>
         <Image
@@ -30,7 +30,7 @@ const FeaturedCollection = () => {
 
           {/* Heading */}
           <h1 className='font-serif text-2xl sm:text-3xl lg:text-4xl font-normal leading-[1.05] tracking-tight  drop-shadow-md select-none'>
-            Oświetleni
+            Oświetlenie
           </h1>
 
           {/* Description */}
