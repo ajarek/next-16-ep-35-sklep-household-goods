@@ -67,7 +67,7 @@ function CollectionCard({ item, index }: CollectionCardProps) {
         />
 
         {/* gradient vignette – always present */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/10 to-transparent z-[1]" />
+        <div className="absolute inset-0 bg-linear-to-t from-black/65 via-black/10 to-transparent z-[1]" />
       </div>
 
       {/* ── Text content ──────────────────────────────────────────────── */}

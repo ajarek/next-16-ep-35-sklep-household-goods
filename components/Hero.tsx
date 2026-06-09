@@ -17,7 +17,7 @@ export default function Hero() {
         />
         {/* Soft overlay to ensure copy readability */}
         <div className="absolute inset-0 bg-black/20 mix-blend-multiply" />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-black/15 to-transparent" />
+        <div className="absolute inset-0 bg-linear-to-r from-black/40 via-black/15 to-transparent" />
       </div>
 
       {/* Content Container */}
@@ -60,7 +60,7 @@ export default function Hero() {
         <span className="text-[9px] font-semibold tracking-[0.3em] uppercase text-white/80">
           Przewiń
         </span>
-        <div className="w-[1px] h-12 bg-white/20 relative overflow-hidden">
+        <div className="w-px h-12 bg-white/20 relative overflow-hidden">
           <div className="absolute inset-0 bg-white animate-scroll-line" />
         </div>
       </div>
