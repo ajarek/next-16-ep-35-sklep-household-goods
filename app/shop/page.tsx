@@ -1,54 +1,26 @@
 "use client"
 
-import React, { useState } from "react"
-import Image from "next/image"
-import Link from "next/link"
-import { ArrowRight, Heart } from "lucide-react"
 import { products } from "@/data/products"
+import { Heart } from "lucide-react"
+import Image from "next/image"
 import { cn } from "@/lib/utils"
+import { useState } from "react"
 import { formatPrice } from "@/data/format"
 
-export default function LatestProducts() {
-  const [wishlist, setWishlist] = useState<Record<string, boolean>>({})
-
-  const toggleWishlist = (id: string, e: React.MouseEvent) => {
-    e.preventDefault()
-    e.stopPropagation()
-    setWishlist((prev) => ({
-      ...prev,
-      [id]: !prev[id],
-    }))
-  }
-
+const ShopPage = () => {
+    const [wishlist, setWishlist] = useState<Record<string, boolean>>({})
+    
+      const toggleWishlist = (id: string, e: React.MouseEvent) => {
+        e.preventDefault()
+        e.stopPropagation()
+        setWishlist((prev) => ({
+          ...prev,
+          [id]: !prev[id],
+        }))
+      }
   return (
-    <section className='w-full bg-background py-20 px-6 sm:px-8'>
-      <div className='max-w-8xl mx-auto'>
-        {/* Header Section */}
-        <div className='flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4 mb-12 border-b border-border pb-6'>
-          <div className='flex flex-col'>
-            <span className='text-[10px] tracking-[0.25em] font-semibold uppercase text-primary mb-2 block select-none'>
-              Nowa Kolekcja
-            </span>
-            <h2 className='font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-foreground leading-[1.15] select-none'>
-              Najnowsze Produkty
-            </h2>
-          </div>
-          <Link
-            href='/shop'
-            className='group flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-foreground/80 hover:text-primary transition-all duration-300'
-          >
-            Zobacz Wszystkie
-            <ArrowRight
-              size={14}
-              className='transition-transform duration-300 group-hover:translate-x-1.5'
-            />
-          </Link>
-        </div>
-
-        {/* Products Grid */}
-        <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-12'>
+    <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 p-8 gap-x-6 gap-y-12'>
           {products
-          .slice(0, 4)
           .map((product) => {
             const isWishlisted = !!wishlist[product.id]
             return (
@@ -131,7 +103,7 @@ export default function LatestProducts() {
             )
           })}
         </div>
-      </div>
-    </section>
   )
 }
+
+export default ShopPage
