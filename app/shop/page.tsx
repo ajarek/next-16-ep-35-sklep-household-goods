@@ -8,6 +8,7 @@ import { cn } from "@/lib/utils"
 import { useState, useMemo, Suspense } from "react"
 import { formatPrice } from "@/data/format"
 import { useSearchParams } from "next/navigation"
+import Link from "next/link"
 
 const categoryMap: Record<string, string> = {
   lighting: "Oświetlenie",
@@ -78,6 +79,7 @@ const ShopContent = () => {
               fill
               className='object-cover blur-3xl scale-110'
               priority
+              sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
             />
           )}
         </div>
@@ -132,6 +134,8 @@ const ShopContent = () => {
                     alt={col.title}
                     fill
                     className='object-cover'
+                    sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
+                    loading='eager'
                   />
                 </div>
                 {col.title}
@@ -184,14 +188,15 @@ const ShopContent = () => {
                       fill
                       sizes='(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw'
                       className='object-cover object-center transition-transform duration-1000 ease-out group-hover:scale-110'
+                      loading='eager'
                     />
 
                     {/* Hover Button Overlay */}
                     <div className='absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700 flex items-center justify-center'>
-                       <div className='bg-background/90 backdrop-blur-md text-foreground text-[10px] tracking-[0.3em] font-bold uppercase py-4 px-8 shadow-2xl border border-border/50 transition-all translate-y-8 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 duration-500 flex items-center gap-2'>
+                       <Link href={`/product/${product.id}`} className='bg-background/90 backdrop-blur-md text-foreground text-[10px] tracking-[0.3em] font-bold uppercase py-4 px-8 shadow-2xl border border-border/50 transition-all translate-y-8 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 duration-500 flex items-center gap-2'>
                         Szczegóły
                         <ChevronRight size={14} />
-                      </div>
+                      </Link>
                     </div>
                   </div>
 

@@ -12,7 +12,7 @@ const FeaturedCollection = () => {
           alt='Elegancko urządzony salon w minimalistycznym i ciepłym stylu'
           fill
           priority
-          sizes='100vw'
+          sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
           className='object-cover object-center select-none'
         />
         {/* Soft overlay to ensure copy readability */}
