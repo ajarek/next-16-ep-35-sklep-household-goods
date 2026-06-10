@@ -33,7 +33,8 @@ const ShopContent = () => {
   const [hoveredCategory, setHoveredCategory] = useState<string | null>(null)
 
   // Sync state with URL parameter changes
-  const [prevInitialCategory, setPrevInitialCategory] = useState(initialCategory)
+  const [prevInitialCategory, setPrevInitialCategory] =
+    useState(initialCategory)
   if (initialCategory !== prevInitialCategory) {
     setPrevInitialCategory(initialCategory)
     const mapped = initialCategory ? categoryMap[initialCategory] : "Wszystkie"
@@ -57,7 +58,9 @@ const ShopContent = () => {
   }, [activeCategory])
 
   const currentBackground = useMemo(() => {
-    const categoryToFind = hoveredCategory || (activeCategory !== "Wszystkie" ? activeCategory : null)
+    const categoryToFind =
+      hoveredCategory ||
+      (activeCategory !== "Wszystkie" ? activeCategory : null)
     if (!categoryToFind) return null
     return collections.find((c) => c.title === categoryToFind)?.image || null
   }, [hoveredCategory, activeCategory])
@@ -66,10 +69,10 @@ const ShopContent = () => {
     <div className='relative min-h-screen bg-background transition-colors duration-700'>
       {/* Dynamic Background Overlay */}
       <div className='absolute inset-0 z-0 h-[600px] overflow-hidden pointer-events-none'>
-        <div 
+        <div
           className={cn(
             "absolute inset-0 transition-opacity duration-1000 ease-in-out",
-            currentBackground ? "opacity-15" : "opacity-0"
+            currentBackground ? "opacity-15" : "opacity-0",
           )}
         >
           {currentBackground && (
@@ -79,7 +82,7 @@ const ShopContent = () => {
               fill
               className='object-cover blur-3xl scale-110'
               priority
-              loading="eager"
+              loading='eager'
               sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
             />
           )}
@@ -95,10 +98,13 @@ const ShopContent = () => {
               Nasza Oferta
             </span>
             <h2 className='font-serif text-4xl sm:text-5xl lg:text-7xl font-normal text-foreground leading-tight'>
-              {activeCategory === "Wszystkie" ? "Wszystkie Produkty" : activeCategory}
+              {activeCategory === "Wszystkie"
+                ? "Wszystkie Produkty"
+                : activeCategory}
             </h2>
             <p className='text-muted-foreground max-w-2xl text-lg font-light leading-relaxed'>
-              Odkryj naszą starannie wyselekcjonowaną kolekcję przedmiotów, które łączą rzemieślniczą precyzję z ponadczasowym designem.
+              Odkryj naszą starannie wyselekcjonowaną kolekcję przedmiotów,
+              które łączą rzemieślniczą precyzję z ponadczasowym designem.
             </p>
           </div>
 
@@ -111,7 +117,7 @@ const ShopContent = () => {
                 "px-6 py-2.5 text-[11px] font-bold uppercase tracking-widest transition-all duration-300 border cursor-pointer",
                 activeCategory === "Wszystkie"
                   ? "bg-primary text-primary-foreground border-primary shadow-lg shadow-primary/20 scale-105"
-                  : "bg-background/50 text-foreground/60 border-border/50 hover:border-primary/40 hover:text-primary backdrop-blur-sm"
+                  : "bg-background/50 text-foreground/60 border-border/50 hover:border-primary/40 hover:text-primary backdrop-blur-sm",
               )}
             >
               Wszystkie
@@ -126,7 +132,7 @@ const ShopContent = () => {
                   "group relative flex items-center gap-3 px-5 py-2.5 text-[11px] font-bold uppercase tracking-widest transition-all duration-500 border overflow-hidden cursor-pointer",
                   activeCategory === col.title
                     ? "bg-primary text-primary-foreground border-primary shadow-lg shadow-primary/20 scale-105"
-                    : "bg-background/50 text-foreground/60 border-border/50 hover:border-primary/40 hover:text-primary backdrop-blur-sm"
+                    : "bg-background/50 text-foreground/60 border-border/50 hover:border-primary/40 hover:text-primary backdrop-blur-sm",
                 )}
               >
                 <div className='relative w-5 h-5 overflow-hidden rounded-full border border-border/20 group-hover:scale-110 transition-transform duration-500'>
@@ -156,7 +162,7 @@ const ShopContent = () => {
                   className='group flex flex-col h-full cursor-pointer'
                 >
                   {/* Image Wrapper */}
-                  <div className='relative aspect-[4/5] w-full overflow-hidden bg-muted/40 mb-6 shadow-2xs group-hover:shadow-xl transition-all duration-700 ease-out'>
+                  <div className='relative aspect-4/5 w-full overflow-hidden bg-muted/40 mb-6 shadow-2xs group-hover:shadow-xl transition-all duration-700 ease-out'>
                     {/* Badge */}
                     {product.tag && (
                       <span className='absolute top-6 left-6 z-10 bg-primary text-primary-foreground text-[9px] font-bold uppercase tracking-[0.2em] py-1.5 px-4 select-none shadow-sm'>
@@ -194,7 +200,10 @@ const ShopContent = () => {
 
                     {/* Hover Button Overlay */}
                     <div className='absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700 flex items-center justify-center'>
-                       <Link href={`/product/${product.id}`} className='bg-background/90 backdrop-blur-md text-foreground text-[10px] tracking-[0.3em] font-bold uppercase py-4 px-8 shadow-2xl border border-border/50 transition-all translate-y-8 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 duration-500 flex items-center gap-2'>
+                      <Link
+                        href={`/product/${product.id}`}
+                        className='bg-background/90 backdrop-blur-md text-foreground text-[10px] tracking-[0.3em] font-bold uppercase py-4 px-8 shadow-2xl border border-border/50 transition-all translate-y-8 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 duration-500 flex items-center gap-2'
+                      >
                         Szczegóły
                         <ChevronRight size={14} />
                       </Link>
@@ -233,10 +242,12 @@ const ShopContent = () => {
             })
           ) : (
             <div className='col-span-full py-20 text-center'>
-              <p className='text-muted-foreground font-light text-lg'>Brak produktów w tej kategorii.</p>
-              <button 
+              <p className='text-muted-foreground font-light text-lg'>
+                Brak produktów w tej kategorii.
+              </p>
+              <button
                 onClick={() => setActiveCategory("Wszystkie")}
-                className="mt-4 text-primary font-bold uppercase text-xs tracking-widest hover:underline cursor-pointer"
+                className='mt-4 text-primary font-bold uppercase text-xs tracking-widest hover:underline cursor-pointer'
               >
                 Pokaż wszystkie
               </button>
@@ -250,7 +261,11 @@ const ShopContent = () => {
 
 const ShopPage = () => {
   return (
-    <Suspense fallback={<div className="p-20 text-center font-serif text-2xl">Ładowanie...</div>}>
+    <Suspense
+      fallback={
+        <div className='p-20 text-center font-serif text-2xl'>Ładowanie...</div>
+      }
+    >
       <ShopContent />
     </Suspense>
   )

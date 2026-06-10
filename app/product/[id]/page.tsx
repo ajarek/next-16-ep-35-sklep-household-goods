@@ -148,14 +148,14 @@ export default function ProductDetailPage({
         <div className='grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20'>
           {/* ── Left Column: Images ───────────────────────────────────── */}
           <div className='lg:col-span-7 flex flex-col gap-6'>
-            <div className='relative aspect-[4/5] w-full bg-muted/30 overflow-hidden group'>
+            <div className='relative aspect-4/5 w-full bg-muted/30 overflow-hidden group'>
               <Image
                 src={product.image}
                 alt={product.title}
                 fill
                 priority
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                loading="eager"
+                sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
+                loading='eager'
                 className='object-cover object-center transition-transform duration-1000 group-hover:scale-105'
               />
               {product.tag && (
@@ -172,8 +172,8 @@ export default function ProductDetailPage({
                   src={product.image}
                   alt='Detal 1'
                   fill
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  loading="eager"
+                  sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
+                  loading='eager'
                   className='object-cover transition-transform duration-700 group-hover:scale-110 opacity-80'
                 />
               </div>
@@ -182,8 +182,8 @@ export default function ProductDetailPage({
                   src={product.image}
                   alt='Detal 2'
                   fill
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  loading="eager"
+                  sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
+                  loading='eager'
                   className='object-cover transition-transform duration-700 group-hover:scale-110 opacity-80'
                 />
               </div>
@@ -393,13 +393,13 @@ export default function ProductDetailPage({
                   href={`/product/${p.id}`}
                   className='group flex flex-col gap-4'
                 >
-                  <div className='relative aspect-[4/5] bg-muted/40 overflow-hidden shadow-2xs group-hover:shadow-xs transition-shadow duration-500'>
+                  <div className='relative aspect-4/5 bg-muted/40 overflow-hidden shadow-2xs group-hover:shadow-xs transition-shadow duration-500'>
                     <Image
                       src={p.image}
                       alt={p.title}
                       fill
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                      loading="eager"
+                      sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
+                      loading='eager'
                       className='object-cover transition-transform duration-700 group-hover:scale-105'
                     />
                   </div>

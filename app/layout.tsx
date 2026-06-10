@@ -1,48 +1,46 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono, Cormorant_Garamond } from "next/font/google";
-import "./globals.css";
+import type { Metadata } from "next"
+import { Geist, Geist_Mono, Cormorant_Garamond } from "next/font/google"
+import "./globals.css"
 import Navbar from "@/components/shadcn-space/blocks/navbar-01/navbar"
 import Footer from "@/components/Footer"
-import { Toaster } from "sonner";
+import { Toaster } from "sonner"
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
-});
+})
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
-});
+})
 
 const cormorantGaramond = Cormorant_Garamond({
   variable: "--font-cormorant-garamond",
   subsets: ["latin"],
-});
+})
 
 export const metadata: Metadata = {
   title: "Sklep AGD",
   description: "sklep internetowy z artykułami gospodarstwa domowego",
-};
+}
 
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: React.ReactNode
 }>) {
   return (
     <html
-      lang="pl"
+      lang='pl'
       className={`${geistSans.variable} ${geistMono.variable} ${cormorantGaramond.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">
+      <body className='min-h-full flex flex-col'>
         <Navbar />
-        <main className="grow">
-          {children}
-        </main>
-        
+        <main className='grow'>{children}</main>
+
         <Footer />
-         <Toaster position="top-right" richColors />
+        <Toaster position='top-right' richColors />
       </body>
     </html>
-  );
+  )
 }

@@ -47,9 +47,7 @@ export default function LatestProducts() {
 
         {/* Products Grid */}
         <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-12'>
-          {products
-          .slice(0, 4)
-          .map((product) => {
+          {products.slice(0, 4).map((product) => {
             const isWishlisted = !!wishlist[product.id]
             return (
               <div
@@ -89,7 +87,7 @@ export default function LatestProducts() {
                     alt={product.title}
                     fill
                     sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
-                    loading="eager"
+                    loading='eager'
                     className='object-cover object-center transition-transform duration-1000 ease-out group-hover:scale-110'
                   />
 

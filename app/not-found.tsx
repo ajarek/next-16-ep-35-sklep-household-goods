@@ -1,11 +1,10 @@
-// nosemgrep: typescript.react.portability.i18next.jsx-not-internationalized
 import type { Metadata } from "next"
 import Link from "next/link"
 import { ArrowRight, CircleOff } from "lucide-react"
 
 export const metadata: Metadata = {
-  title: "Page Not Found",
-  description: "The page you are looking for does not exist or has been moved.",
+  title: "Strona nie znaleziona",
+  description: "Strona, której szukasz nie istnieje lub została przeniesiona.",
 }
 
 export default function NotFound() {

@@ -79,7 +79,7 @@ function CollectionCard({
             alt={item.title}
             fill
             sizes='(max-width: 640px) 100vw, 384px'
-            loading="eager"
+            loading='eager'
             className='object-cover object-center transition-transform duration-700 ease-out group-hover:scale-[1.05]'
             priority={index < 2}
           />
@@ -141,7 +141,7 @@ function CollectionCard({
           alt={item.title}
           fill
           sizes='(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw'
-          loading="eager"
+          loading='eager'
           className='object-cover object-center transition-transform duration-700 ease-[cubic-bezier(.25,1,.5,1)] group-hover:scale-[1.06]'
           priority={index < 3}
         />
@@ -225,7 +225,7 @@ export default function CollectionsPage() {
                 alt={col.title}
                 fill
                 sizes='33vw'
-                loading="eager"
+                loading='eager'
                 className='object-cover object-center scale-110'
                 priority={i < 3}
               />
