@@ -14,9 +14,10 @@ import {
 } from "@/components/ui/navigation-menu"
 import { cn } from "@/lib/utils"
 import { Handbag, TextAlignJustify, Heart } from "lucide-react"
-import { useCallback, useEffect, useState } from "react"
+import { useCallback, useEffect, useState, useSyncExternalStore } from "react"
 import Link from "next/link"
 import { AnimatedThemeToggler } from "@/components/ui/animated-theme-toggler"
+import { useCartStore } from "@/store/cartStore"
 
 export type NavigationSection = {
   title: string
@@ -41,6 +42,15 @@ const navigationData: NavigationSection[] = [
 const Navbar = () => {
   const [sticky, setSticky] = useState(false)
   const [isOpen, setIsOpen] = useState(false)
+  const cartItems = useCartStore((state) => state.items)
+  
+  const isClient = useSyncExternalStore(
+    () => () => {},
+    () => true,
+    () => false
+  )
+
+  const totalItems = cartItems.reduce((acc, item) => acc + (item.quantity || 1), 0)
   
   const handleScroll = useCallback(() => {
     setSticky(window.scrollY >= 20)
@@ -99,8 +109,13 @@ const Navbar = () => {
             <Link href="/wishlist" className="hover:text-foreground transition-colors duration-200">
               <Heart size={20} strokeWidth={1.5} />
             </Link>
-            <Link href="/cart" className="hover:text-foreground transition-colors duration-200">
+            <Link href="/cart" className="relative hover:text-foreground transition-colors duration-200">
               <Handbag size={20} strokeWidth={1.5} />
+              {isClient && totalItems > 0 && (
+                <span className="absolute -top-1.5 -right-1.5 bg-primary text-primary-foreground text-[9px] font-bold w-4 h-4 rounded-full flex items-center justify-center">
+                   {totalItems}
+                </span>
+              )}
             </Link>
             <div className="border-l border-border/60 h-4 mx-1 hidden sm:block" />
             <AnimatedThemeToggler />

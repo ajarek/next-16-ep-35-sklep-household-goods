@@ -79,6 +79,7 @@ const ShopContent = () => {
               fill
               className='object-cover blur-3xl scale-110'
               priority
+              loading="eager"
               sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
             />
           )}
@@ -155,7 +156,7 @@ const ShopContent = () => {
                   className='group flex flex-col h-full cursor-pointer'
                 >
                   {/* Image Wrapper */}
-                  <div className='relative aspect-4/5 w-full overflow-hidden bg-muted/40 mb-6 shadow-2xs group-hover:shadow-xl transition-all duration-700 ease-out'>
+                  <div className='relative aspect-[4/5] w-full overflow-hidden bg-muted/40 mb-6 shadow-2xs group-hover:shadow-xl transition-all duration-700 ease-out'>
                     {/* Badge */}
                     {product.tag && (
                       <span className='absolute top-6 left-6 z-10 bg-primary text-primary-foreground text-[9px] font-bold uppercase tracking-[0.2em] py-1.5 px-4 select-none shadow-sm'>

@@ -54,6 +54,7 @@ function CollectionCard({ item, index }: CollectionCardProps) {
           alt={item.title}
           fill
           sizes="(max-width: 768px) 100vw, (max-width: 1280px) 66vw, 800px"
+          loading="eager"
           className="object-cover object-center transition-transform duration-700 ease-[cubic-bezier(.25,1,.5,1)] group-hover:scale-[1.04]"
           priority={index < 2}
         />

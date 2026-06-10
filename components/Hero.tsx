@@ -13,6 +13,7 @@ export default function Hero() {
           fill
           priority
           sizes="100vw"
+          loading="eager"
           className="object-cover object-center select-none"
         />
         {/* Soft overlay to ensure copy readability */}

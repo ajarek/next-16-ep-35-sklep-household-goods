@@ -90,6 +90,8 @@ export default function AboutPage() {
               src="/meble-1.jpg" 
               alt="Praca rzemieślnicza" 
               fill 
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              loading="eager"
               className="object-cover transition-transform duration-700 group-hover:scale-105"
             />
             <div className='absolute -bottom-6 -right-6 w-48 h-48 border border-primary/20 bg-background/80 backdrop-blur-md p-6 hidden sm:flex flex-col justify-end gap-2'>
@@ -209,14 +211,14 @@ export default function AboutPage() {
 
           <div className='order-1 lg:order-2 grid grid-cols-2 gap-4 h-[500px]'>
              <div className='relative h-full bg-muted/20'>
-                <Image src="/lampa-1.jpg" alt="Rzemiosło" fill className="object-cover" />
+                <Image src="/lampa-1.jpg" alt="Rzemiosło" fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" loading="eager" className="object-cover" />
              </div>
              <div className='flex flex-col gap-4 h-full'>
                 <div className='relative flex-1 bg-muted/20'>
-                    <Image src="/wazony-1.jpg" alt="Rzemiosło" fill className="object-cover" />
+                    <Image src="/wazony-1.jpg" alt="Rzemiosło" fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" loading="eager" className="object-cover" />
                 </div>
                 <div className='relative flex-1 bg-muted/20'>
-                    <Image src="/tekstylia-1.jpg" alt="Rzemiosło" fill className="object-cover" />
+                    <Image src="/tekstylia-1.jpg" alt="Rzemiosło" fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" loading="eager" className="object-cover" />
                 </div>
              </div>
           </div>

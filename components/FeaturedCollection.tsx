@@ -13,6 +13,7 @@ const FeaturedCollection = () => {
           fill
           priority
           sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
+          loading="eager"
           className='object-cover object-center select-none'
         />
         {/* Soft overlay to ensure copy readability */}
