@@ -5,7 +5,7 @@ export interface Product {
     image: string;
     category: string;
     description: string;
-    quantity: number;
+    quantity?: number;
     details: string;
     tag?: "featured" | "new" | null;
 }

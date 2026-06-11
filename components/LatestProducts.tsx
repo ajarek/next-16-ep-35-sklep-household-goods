@@ -1,23 +1,28 @@
 "use client"
 
-import React, { useState } from "react"
+import React from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { ArrowRight, Heart } from "lucide-react"
 import { products } from "@/data/products"
 import { cn } from "@/lib/utils"
 import { formatPrice } from "@/data/format"
+import { useWishlistStore } from "@/store/wishlistStore"
+import { toast } from "sonner"
 
 export default function LatestProducts() {
-  const [wishlist, setWishlist] = useState<Record<string, boolean>>({})
+  const { items, toggleWishlist } = useWishlistStore()
 
-  const toggleWishlist = (id: string, e: React.MouseEvent) => {
+  const handleToggleWishlist = (product: any, e: React.MouseEvent) => {
     e.preventDefault()
     e.stopPropagation()
-    setWishlist((prev) => ({
-      ...prev,
-      [id]: !prev[id],
-    }))
+    const isWishlisted = items.some((item) => item.id === product.id)
+    toggleWishlist(product)
+    if (isWishlisted) {
+      toast.info(`Usunięto ${product.title} z ulubionych`)
+    } else {
+      toast.success(`Dodano ${product.title} do ulubionych`)
+    }
   }
 
   return (
@@ -48,7 +53,7 @@ export default function LatestProducts() {
         {/* Products Grid */}
         <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-12'>
           {products.slice(0, 4).map((product) => {
-            const isWishlisted = !!wishlist[product.id]
+            const isWishlisted = items.some((item) => item.id === product.id)
             return (
               <div
                 key={product.id}
@@ -65,7 +70,7 @@ export default function LatestProducts() {
 
                   {/* Wishlist Button */}
                   <button
-                    onClick={(e) => toggleWishlist(product.id, e)}
+                    onClick={(e) => handleToggleWishlist(product, e)}
                     className='absolute top-4 right-4 z-10 bg-background/80 hover:bg-background border border-border/20 backdrop-blur-md text-foreground rounded-full p-2.5 shadow-sm transition-all duration-300 hover:scale-105 active:scale-95 group/heart cursor-pointer'
                     aria-label='Dodaj do ulubionych'
                   >

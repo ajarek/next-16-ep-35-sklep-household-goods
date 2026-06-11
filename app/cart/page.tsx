@@ -167,7 +167,7 @@ export default function CartPage() {
                         <Minus size={12} />
                       </button>
                       <span className='w-8 text-center text-xs font-bold'>
-                        {item.quantity}
+                        {item.quantity ?? 1}
                       </span>
                       <button
                         onClick={() => increment(item.id)}
@@ -178,9 +178,9 @@ export default function CartPage() {
                     </div>
                     <div className='flex flex-col items-end gap-1'>
                       <span className='text-lg font-semibold'>
-                        {formatPrice(item.price * item.quantity)}
+                        {formatPrice(item.price * (item.quantity ?? 1))}
                       </span>
-                      {item.quantity > 1 && (
+                      {(item.quantity ?? 1) > 1 && (
                         <span className='text-[10px] text-muted-foreground italic'>
                           {formatPrice(item.price)} / sztuka
                         </span>

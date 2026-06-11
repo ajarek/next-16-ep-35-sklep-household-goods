@@ -9,6 +9,8 @@ import { useState, useMemo, Suspense } from "react"
 import { formatPrice } from "@/data/format"
 import { useSearchParams } from "next/navigation"
 import Link from "next/link"
+import { useWishlistStore } from "@/store/wishlistStore"
+import { toast } from "sonner"
 
 const categoryMap: Record<string, string> = {
   lighting: "Oświetlenie",
@@ -23,7 +25,7 @@ const ShopContent = () => {
   const searchParams = useSearchParams()
   const initialCategory = searchParams.get("category")
 
-  const [wishlist, setWishlist] = useState<Record<string, boolean>>({})
+  const { items: wishlistItems, toggleWishlist } = useWishlistStore()
   const [activeCategory, setActiveCategory] = useState<string>(() => {
     if (initialCategory && categoryMap[initialCategory]) {
       return categoryMap[initialCategory]
@@ -43,13 +45,16 @@ const ShopContent = () => {
     }
   }
 
-  const toggleWishlist = (id: string, e: React.MouseEvent) => {
+  const handleToggleWishlist = (product: any, e: React.MouseEvent) => {
     e.preventDefault()
     e.stopPropagation()
-    setWishlist((prev) => ({
-      ...prev,
-      [id]: !prev[id],
-    }))
+    const isWishlisted = wishlistItems.some((item) => item.id === product.id)
+    toggleWishlist(product)
+    if (isWishlisted) {
+      toast.info(`Usunięto ${product.title} z ulubionych`)
+    } else {
+      toast.success(`Dodano ${product.title} do ulubionych`)
+    }
   }
 
   const filteredProducts = useMemo(() => {
@@ -155,7 +160,7 @@ const ShopContent = () => {
         <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16'>
           {filteredProducts.length > 0 ? (
             filteredProducts.map((product) => {
-              const isWishlisted = !!wishlist[product.id]
+              const isWishlisted = wishlistItems.some((item) => item.id === product.id)
               return (
                 <div
                   key={product.id}
@@ -172,7 +177,7 @@ const ShopContent = () => {
 
                     {/* Wishlist Button */}
                     <button
-                      onClick={(e) => toggleWishlist(product.id, e)}
+                      onClick={(e) => handleToggleWishlist(product, e)}
                       className='absolute top-6 right-6 z-10 bg-background/80 hover:bg-background border border-border/20 backdrop-blur-md text-foreground rounded-full p-3 shadow-sm transition-all duration-300 hover:scale-110 active:scale-90 group/heart cursor-pointer'
                       aria-label='Dodaj do ulubionych'
                     >

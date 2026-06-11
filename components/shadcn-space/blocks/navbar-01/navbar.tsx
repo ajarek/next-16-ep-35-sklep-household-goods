@@ -18,6 +18,7 @@ import { useCallback, useEffect, useState, useSyncExternalStore } from "react"
 import Link from "next/link"
 import { AnimatedThemeToggler } from "@/components/ui/animated-theme-toggler"
 import { useCartStore } from "@/store/cartStore"
+import { useWishlistStore } from "@/store/wishlistStore"
 
 export type NavigationSection = {
   title: string
@@ -43,6 +44,7 @@ const Navbar = () => {
   const [sticky, setSticky] = useState(false)
   const [isOpen, setIsOpen] = useState(false)
   const cartItems = useCartStore((state) => state.items)
+  const wishlistItems = useWishlistStore((state) => state.items)
 
   const isClient = useSyncExternalStore(
     () => () => {},
@@ -54,6 +56,7 @@ const Navbar = () => {
     (acc, item) => acc + (item.quantity || 1),
     0,
   )
+  const totalWishlistItems = wishlistItems.length
 
   const handleScroll = useCallback(() => {
     setSticky(window.scrollY >= 20)
@@ -111,9 +114,14 @@ const Navbar = () => {
           <div className='flex gap-5 items-center text-muted-foreground'>
             <Link
               href='/wishlist'
-              className='hover:text-foreground transition-colors duration-200'
+              className='relative hover:text-foreground transition-colors duration-200'
             >
               <Heart size={20} strokeWidth={1.5} />
+              {isClient && totalWishlistItems > 0 && (
+                <span className='absolute -top-1.5 -right-1.5 bg-primary text-primary-foreground text-[9px] font-bold w-4 h-4 rounded-full flex items-center justify-center animate-in zoom-in duration-300'>
+                  {totalWishlistItems}
+                </span>
+              )}
             </Link>
             <Link
               href='/cart'

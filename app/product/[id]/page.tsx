@@ -21,6 +21,7 @@ import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 import { toast } from "sonner"
 import { useCartStore } from "@/store/cartStore"
+import { useWishlistStore } from "@/store/wishlistStore"
 
 // ─── Reusable Accordion Component ──────────────────────────────────────────
 
@@ -76,9 +77,10 @@ export default function ProductDetailPage({
   const { id } = use(params)
   const product = products.find((p) => p.id === id)
   const addItemToCart = useCartStore((state) => state.addItemToCart)
+  const { items: wishlistItems, toggleWishlist: toggleGlobalWishlist } = useWishlistStore()
 
   const [quantity, setQuantity] = useState(1)
-  const [isWishlisted, setIsWishlisted] = useState(false)
+  const isWishlisted = wishlistItems.some((item) => item.id === product?.id)
   const [activeAccordion, setActiveAccordion] = useState<string | null>(
     "szczegoly",
   )
@@ -112,8 +114,10 @@ export default function ProductDetailPage({
   }
 
   const toggleWishlist = () => {
-    setIsWishlisted(!isWishlisted)
-    toast.info(isWishlisted ? "Usunięto z ulubionych" : "Dodano do ulubionych")
+    if (product) {
+      toggleGlobalWishlist(product)
+      toast.info(isWishlisted ? "Usunięto z ulubionych" : "Dodano do ulubionych")
+    }
   }
 
   return (
