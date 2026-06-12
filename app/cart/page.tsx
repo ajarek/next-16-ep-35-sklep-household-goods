@@ -1,8 +1,9 @@
 "use client"
 
-import React, { useSyncExternalStore } from "react"
+import React, { useSyncExternalStore, useState } from "react"
 import Link from "next/link"
 import Image from "next/image"
+import { useRouter } from "next/navigation"
 import {
   Trash2,
   Plus,
@@ -13,15 +14,26 @@ import {
   Truck,
   ShieldCheck,
   CreditCard,
+  Loader2,
 } from "lucide-react"
 import { useCartStore } from "@/store/cartStore"
 import { formatPrice } from "@/data/format"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
+import { toast } from "sonner"
 
 export default function CartPage() {
-  const { items, increment, decrement, removeItemFromCart, total } =
-    useCartStore()
+  const {
+    items,
+    increment,
+    decrement,
+    removeItemFromCart,
+    total,
+    removeAllFromCart,
+  } = useCartStore()
+  const [isProcessing, setIsProcessing] = useState(false)
+  const router = useRouter()
+
   const isClient = useSyncExternalStore(
     () => () => {},
     () => true,
@@ -34,6 +46,21 @@ export default function CartPage() {
   const shippingThreshold = 500
   const isFreeShipping = cartTotal >= shippingThreshold
   const shippingProgress = Math.min((cartTotal / shippingThreshold) * 100, 100)
+
+  const handleCheckout = async () => {
+    setIsProcessing(true)
+
+    // Symulacja procesu płatności
+    await new Promise((resolve) => setTimeout(resolve, 2000))
+
+    toast.success("Zamówienie przyjęte!", {
+      description: "Dziękujemy za zakupy. Twoje zamówienie jest już w realizacji.",
+    })
+
+    removeAllFromCart()
+    setIsProcessing(false)
+    router.push("/")
+  }
 
   if (items.length === 0) {
     return (
@@ -245,12 +272,22 @@ export default function CartPage() {
               </div>
 
               <div className='flex flex-col gap-4 mt-4'>
-                <Button className='w-full rounded-none py-8 text-[11px] tracking-[0.25em] uppercase font-bold group'>
-                  Przejdź do kasy
-                  <ArrowRight
-                    size={16}
-                    className='ml-2 transition-transform group-hover:translate-x-1'
-                  />
+                <Button
+                  onClick={handleCheckout}
+                  disabled={isProcessing}
+                  className='w-full rounded-none py-8 text-[11px] tracking-[0.25em] uppercase font-bold group'
+                >
+                  {isProcessing ? (
+                    <Loader2 size={16} className='animate-spin' />
+                  ) : (
+                    <>
+                      Przejdź do kasy
+                      <ArrowRight
+                        size={16}
+                        className='ml-2 transition-transform group-hover:translate-x-1'
+                      />
+                    </>
+                  )}
                 </Button>
 
                 {/* Trust badges */}

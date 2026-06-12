@@ -98,9 +98,9 @@ export default function LatestProducts() {
 
                   {/* Hover Button Overlay */}
                   <div className='absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end justify-center pb-6'>
-                    <button className='bg-card text-card-foreground hover:bg-muted text-[10px] tracking-widest font-semibold uppercase py-3 px-6 shadow-md border border-border hover:border-foreground/20 transition-all translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 duration-500'>
+                    <Link href={`/product/${product.id}`} className='bg-card text-card-foreground hover:bg-muted text-[10px] tracking-widest font-semibold uppercase py-3 px-6 shadow-md border border-border hover:border-foreground/20 transition-all translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 duration-500'>
                       Zobacz Szczegóły
-                    </button>
+                    </Link>
                   </div>
                 </div>
 
