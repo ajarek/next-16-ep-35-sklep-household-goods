@@ -50,7 +50,6 @@ export default function CartPage() {
   const handleCheckout = async () => {
     setIsProcessing(true)
 
-    // Symulacja procesu płatności
     await new Promise((resolve) => setTimeout(resolve, 2000))
 
     toast.success("Zamówienie przyjęte!", {
@@ -89,7 +88,6 @@ export default function CartPage() {
 
   return (
     <div className='w-full bg-background min-h-screen pb-24'>
-      {/* ── Header ─────────────────────────────────────────────────── */}
       <div className='max-w-7xl mx-auto px-6 sm:px-8 py-12 flex flex-col gap-4 border-b border-border/60'>
         <h1 className='font-serif text-4xl sm:text-5xl text-foreground'>
           Koszyk
@@ -110,9 +108,7 @@ export default function CartPage() {
 
       <div className='max-w-7xl mx-auto px-6 sm:px-8 py-12'>
         <div className='grid grid-cols-1 lg:grid-cols-12 gap-16 items-start'>
-          {/* ── Left: Items List ─────────────────────────────────────── */}
           <div className='lg:col-span-8 flex flex-col gap-8'>
-            {/* Free Shipping Progress */}
             <div className='bg-primary/5 p-6 border border-primary/10 flex flex-col gap-4'>
               <div className='flex items-center justify-between text-[10px] tracking-widest uppercase font-bold'>
                 <span className='flex items-center gap-2'>
@@ -141,7 +137,6 @@ export default function CartPage() {
                   key={item.id}
                   className='grid grid-cols-1 sm:grid-cols-12 gap-6 py-8 border-b border-border/60 group'
                 >
-                  {/* Image */}
                   <div className='sm:col-span-3'>
                     <Link
                       href={`/product/${item.id}`}
@@ -158,7 +153,6 @@ export default function CartPage() {
                     </Link>
                   </div>
 
-                  {/* Info */}
                   <div className='sm:col-span-5 flex flex-col justify-between py-1'>
                     <div className='flex flex-col gap-1'>
                       <span className='text-[9px] uppercase tracking-widest text-primary font-bold'>
@@ -184,7 +178,6 @@ export default function CartPage() {
                     </button>
                   </div>
 
-                  {/* Quantity & Price */}
                   <div className='sm:col-span-4 flex flex-col items-end justify-between py-1'>
                     <div className='flex items-center border border-border/60'>
                       <button
@@ -230,7 +223,6 @@ export default function CartPage() {
             </Link>
           </div>
 
-          {/* ── Right: Summary ────────────────────────────────────────── */}
           <div className='lg:col-span-4 sticky top-32'>
             <div className='bg-primary/3 p-8 flex flex-col gap-8 border border-border/40'>
               <h2 className='font-serif text-2xl text-foreground border-b border-border/60 pb-6'>
@@ -290,7 +282,6 @@ export default function CartPage() {
                   )}
                 </Button>
 
-                {/* Trust badges */}
                 <div className='grid grid-cols-1 gap-4 mt-4 pt-6 border-t border-border/40'>
                   <div className='flex items-center gap-3 text-muted-foreground'>
                     <ShieldCheck size={16} className='text-primary/60' />

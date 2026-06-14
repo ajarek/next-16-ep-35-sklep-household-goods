@@ -87,12 +87,10 @@ const Navbar = () => {
     >
       <div className='max-w-7xl mx-auto w-full px-6 sm:px-8'>
         <nav className='w-full flex items-center justify-between gap-6'>
-          {/* Logo Brand */}
           <Link href='/' className='cursor-pointer'>
             <Logo />
           </Link>
 
-          {/* Center Navigation Menu */}
           <div className='hidden md:block'>
             <NavigationMenu className='bg-transparent'>
               <NavigationMenuList className='flex gap-8'>
@@ -110,7 +108,6 @@ const Navbar = () => {
             </NavigationMenu>
           </div>
 
-          {/* Right Action Icons */}
           <div className='flex gap-5 items-center text-muted-foreground'>
             <Link
               href='/wishlist'
@@ -137,7 +134,6 @@ const Navbar = () => {
             <div className='border-l border-border/60 h-4 mx-1 hidden sm:block' />
             <AnimatedThemeToggler />
 
-            {/* Mobile Menu Trigger */}
             <div className='md:hidden'>
               <DropdownMenu open={isOpen} onOpenChange={setIsOpen}>
                 <DropdownMenuTrigger className='rounded-full bg-background border border-border p-2 outline-none flex items-center justify-center cursor-pointer transition-colors hover:bg-muted'>

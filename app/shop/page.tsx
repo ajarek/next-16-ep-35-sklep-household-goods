@@ -11,6 +11,7 @@ import { useSearchParams } from "next/navigation"
 import Link from "next/link"
 import { useWishlistStore } from "@/store/wishlistStore"
 import { toast } from "sonner"
+import type { Product } from "@/types/typeProduct"
 
 const categoryMap: Record<string, string> = {
   lighting: "Oświetlenie",
@@ -34,7 +35,6 @@ const ShopContent = () => {
   })
   const [hoveredCategory, setHoveredCategory] = useState<string | null>(null)
 
-  // Sync state with URL parameter changes
   const [prevInitialCategory, setPrevInitialCategory] =
     useState(initialCategory)
   if (initialCategory !== prevInitialCategory) {
@@ -45,7 +45,7 @@ const ShopContent = () => {
     }
   }
 
-  const handleToggleWishlist = (product: any, e: React.MouseEvent) => {
+  const handleToggleWishlist = (product: Product, e: React.MouseEvent) => {
     e.preventDefault()
     e.stopPropagation()
     const isWishlisted = wishlistItems.some((item) => item.id === product.id)
@@ -72,7 +72,6 @@ const ShopContent = () => {
 
   return (
     <div className='relative min-h-screen bg-background transition-colors duration-700'>
-      {/* Dynamic Background Overlay */}
       <div className='absolute inset-0 z-0 h-[600px] overflow-hidden pointer-events-none'>
         <div
           className={cn(
@@ -96,7 +95,6 @@ const ShopContent = () => {
       </div>
 
       <section className='relative z-10 flex flex-col p-8 sm:p-12 lg:p-16 max-w-7xl mx-auto'>
-        {/* Header Section */}
         <header className='mb-16 space-y-8'>
           <div className='space-y-4'>
             <span className='text-[10px] font-bold uppercase tracking-[0.3em] text-primary/60'>
@@ -113,7 +111,6 @@ const ShopContent = () => {
             </p>
           </div>
 
-          {/* Collection Filter */}
           <div className='flex flex-wrap items-center gap-4 py-4'>
             <button
               onClick={() => setActiveCategory("Wszystkie")}
@@ -156,7 +153,6 @@ const ShopContent = () => {
           </div>
         </header>
 
-        {/* Product Grid */}
         <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16'>
           {filteredProducts.length > 0 ? (
             filteredProducts.map((product) => {
@@ -166,16 +162,13 @@ const ShopContent = () => {
                   key={product.id}
                   className='group flex flex-col h-full cursor-pointer'
                 >
-                  {/* Image Wrapper */}
                   <div className='relative aspect-4/5 w-full overflow-hidden bg-muted/40 mb-6 shadow-2xs group-hover:shadow-xl transition-all duration-700 ease-out'>
-                    {/* Badge */}
                     {product.tag && (
                       <span className='absolute top-6 left-6 z-10 bg-primary text-primary-foreground text-[9px] font-bold uppercase tracking-[0.2em] py-1.5 px-4 select-none shadow-sm'>
                         {product.tag === "featured" ? "Polecany" : "Nowość"}
                       </span>
                     )}
 
-                    {/* Wishlist Button */}
                     <button
                       onClick={(e) => handleToggleWishlist(product, e)}
                       className='absolute top-6 right-6 z-10 bg-background/80 hover:bg-background border border-border/20 backdrop-blur-md text-foreground rounded-full p-3 shadow-sm transition-all duration-300 hover:scale-110 active:scale-90 group/heart cursor-pointer'
@@ -193,7 +186,6 @@ const ShopContent = () => {
                       />
                     </button>
 
-                    {/* Product Image */}
                     <Image
                       src={product.image}
                       alt={product.title}
@@ -203,7 +195,6 @@ const ShopContent = () => {
                       loading='eager'
                     />
 
-                    {/* Hover Button Overlay */}
                     <div className='absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700 flex items-center justify-center'>
                       <Link
                         href={`/product/${product.id}`}
@@ -215,24 +206,19 @@ const ShopContent = () => {
                     </div>
                   </div>
 
-                  {/* Info Container */}
                   <div className='flex flex-col grow px-1'>
-                    {/* Category */}
                     <span className='text-[10px] tracking-[0.25em] font-bold uppercase text-primary/60 mb-2'>
                       {product.category}
                     </span>
 
-                    {/* Title */}
                     <h3 className='font-serif text-xl text-foreground font-normal mb-2 transition-colors duration-500 group-hover:text-primary line-clamp-1'>
                       {product.title}
                     </h3>
 
-                    {/* Description */}
                     <p className='text-sm font-light text-muted-foreground/70 leading-relaxed mb-6 line-clamp-2'>
                       {product.description}
                     </p>
 
-                    {/* Footer Row */}
                     <div className='flex items-baseline justify-between pt-4 border-t border-border/40 mt-auto'>
                       <span className='text-base font-semibold text-foreground tracking-tight'>
                         {formatPrice(product.price)}

@@ -4,7 +4,6 @@ import React, { useEffect, useRef, useState } from "react"
 import { Button } from "@/components/ui/button"
 import { ArrowRight, Leaf, HandHeart, Star, Clock } from "lucide-react"
 
-// ─── Decorative divider ────────────────────────────────────────────────────
 function SectionDivider() {
   return (
     <div className='flex items-center gap-3 justify-center'>
@@ -15,7 +14,6 @@ function SectionDivider() {
   )
 }
 
-// ─── Animated counter ──────────────────────────────────────────────────────
 function AnimatedCounter({
   end,
   suffix = "",
@@ -67,7 +65,6 @@ function AnimatedCounter({
   )
 }
 
-// ─── Stats data ────────────────────────────────────────────────────────────
 const stats = [
   { value: 12, suffix: "+", label: "lat doświadczenia" },
   { value: 340, suffix: "+", label: "artyzanów i twórców" },
@@ -75,7 +72,6 @@ const stats = [
   { value: 2400, suffix: "+", label: "unikalnych przedmiotów" },
 ]
 
-// ─── Values data ───────────────────────────────────────────────────────────
 const values = [
   {
     icon: HandHeart,
@@ -103,29 +99,24 @@ const values = [
   },
 ]
 
-// ─── Main Component ────────────────────────────────────────────────────────
 export default function AboutUs() {
   return (
     <section
       id='about-us'
       className='w-full bg-background border-t border-border/60'
     >
-      {/* ── Hero Quote Block ─────────────────────────────────────────── */}
       <div className='relative w-full py-28 px-6 sm:px-8 flex flex-col items-center text-center overflow-hidden'>
-        {/* subtle radial background accent */}
         <div className='absolute inset-0 pointer-events-none'>
           <div className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-primary/5 blur-3xl' />
         </div>
 
         <div className='relative z-10 max-w-3xl mx-auto flex flex-col items-center gap-6 select-none'>
-          {/* Eyebrow */}
           <span className='text-[10px] tracking-[0.35em] font-semibold uppercase text-primary'>
             O nas
           </span>
 
           <SectionDivider />
 
-          {/* Main quote */}
           <h2 className='font-serif text-4xl sm:text-5xl lg:text-6xl font-normal text-foreground leading-[1.15] tracking-tight'>
             Wierzymy w piękno powolnego życia&nbsp;— w przedmioty tworzone z
             troską, materiały, które{" "}
@@ -134,7 +125,6 @@ export default function AboutUs() {
             <em className='font-light'>zatrzymania</em>.
           </h2>
 
-          {/* Sub-description */}
           <p className='text-sm sm:text-base font-light text-muted-foreground max-w-xl leading-relaxed'>
             Każdy przedmiot w naszej kolekcji jest wybrany ze względu na
             integralność materiałową, historię twórcy i zdolność do przetrwania
@@ -142,7 +132,6 @@ export default function AboutUs() {
             nasze zaangażowanie w rzemiosło i zrównoważony rozwój.
           </p>
 
-          {/* CTA */}
           <div className='mt-4'>
             <Button
               asChild
@@ -161,7 +150,6 @@ export default function AboutUs() {
         </div>
       </div>
 
-      {/* ── Stats Strip ──────────────────────────────────────────────── */}
       <div className='border-y border-border/60 bg-primary/3'>
         <div className='max-w-5xl mx-auto px-6 sm:px-8 py-12 grid grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-4'>
           {stats.map((stat) => (
@@ -180,7 +168,6 @@ export default function AboutUs() {
         </div>
       </div>
 
-      {/* ── Values Grid ──────────────────────────────────────────────── */}
       <div className='max-w-5xl mx-auto px-6 sm:px-8 py-24'>
         <div className='flex flex-col items-center text-center mb-16 gap-4 select-none'>
           <span className='text-[10px] tracking-[0.3em] font-semibold uppercase text-primary'>
@@ -200,7 +187,6 @@ export default function AboutUs() {
                 key={value.title}
                 className='group bg-background p-8 sm:p-10 flex flex-col gap-4 hover:bg-primary/3 transition-colors duration-300'
               >
-                {/* Icon circle */}
                 <div className='w-10 h-10 rounded-full border border-primary/30 flex items-center justify-center text-primary group-hover:border-primary group-hover:bg-primary/10 transition-all duration-300'>
                   <Icon size={18} strokeWidth={1.5} />
                 </div>
@@ -212,7 +198,6 @@ export default function AboutUs() {
                   {value.description}
                 </p>
 
-                {/* Decorative bottom accent */}
                 <span className='block mt-2 h-px w-0 bg-primary transition-[width] duration-500 ease-out group-hover:w-12' />
               </div>
             )
@@ -220,9 +205,7 @@ export default function AboutUs() {
         </div>
       </div>
 
-      {/* ── Manifesto Banner ─────────────────────────────────────────── */}
       <div className='relative w-full bg-foreground overflow-hidden'>
-        {/* decorative lines */}
         <div className='absolute inset-0 pointer-events-none opacity-10'>
           <div className='absolute top-0 left-1/4 w-px h-full bg-primary-foreground' />
           <div className='absolute top-0 right-1/4 w-px h-full bg-primary-foreground' />

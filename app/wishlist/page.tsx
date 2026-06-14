@@ -8,7 +8,6 @@ import { useWishlistStore } from "@/store/wishlistStore"
 import { useCartStore } from "@/store/cartStore"
 import { formatPrice } from "@/data/format"
 import { Button } from "@/components/ui/button"
-import { cn } from "@/lib/utils"
 import { toast } from "sonner"
 import type { Product } from "@/types/typeProduct"
 
@@ -35,7 +34,6 @@ export default function WishlistPage() {
     toast.info(`Usunięto ${title} z ulubionych`)
   }
 
-  // Elegant loading skeleton structure while client state is hydrating
   if (!isClient) {
     return (
       <div className='w-full bg-background min-h-screen pb-24'>
@@ -87,7 +85,6 @@ export default function WishlistPage() {
 
   return (
     <div className='w-full bg-background min-h-screen pb-24 animate-in fade-in duration-500'>
-      {/* ── Header ─────────────────────────────────────────────────── */}
       <div className='max-w-7xl mx-auto px-6 sm:px-8 py-12 flex flex-col gap-4 border-b border-border/60'>
         <h1 className='font-serif text-4xl sm:text-5xl text-foreground'>
           Lista życzeń
@@ -106,7 +103,6 @@ export default function WishlistPage() {
         </div>
       </div>
 
-      {/* ── Grid List ──────────────────────────────────────────────── */}
       <div className='max-w-7xl mx-auto px-6 sm:px-8 py-12'>
         <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-12'>
           {items.map((product) => (
@@ -114,16 +110,13 @@ export default function WishlistPage() {
               key={product.id}
               className='group flex flex-col h-full cursor-pointer relative'
             >
-              {/* Image Wrapper */}
               <div className='relative aspect-4/5 w-full overflow-hidden bg-muted/40 mb-4 shadow-2xs group-hover:shadow-xs transition-shadow duration-500'>
-                {/* Badge */}
                 {product.tag && (
                   <span className='absolute top-4 left-4 z-10 bg-primary text-primary-foreground text-[9px] font-bold uppercase tracking-[0.15em] py-1 px-3.5 select-none shadow-sm'>
                     {product.tag === "featured" ? "Polecany" : "Nowość"}
                   </span>
                 )}
 
-                {/* Wishlist Button (Remove on click) */}
                 <button
                   onClick={(e) => {
                     e.preventDefault()
@@ -140,7 +133,6 @@ export default function WishlistPage() {
                   />
                 </button>
 
-                {/* Product Image */}
                 <Link href={`/product/${product.id}`} className='block w-full h-full relative'>
                   <Image
                     src={product.image}
@@ -152,7 +144,6 @@ export default function WishlistPage() {
                   />
                 </Link>
 
-                {/* Hover Button Overlay */}
                 <div className='absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end justify-center pb-6'>
                   <Link
                     href={`/product/${product.id}`}
@@ -163,26 +154,21 @@ export default function WishlistPage() {
                 </div>
               </div>
 
-              {/* Info Container */}
               <div className='flex flex-col grow'>
-                {/* Category */}
                 <span className='text-[10px] tracking-[0.2em] font-bold uppercase text-primary/70 mb-1'>
                   {product.category}
                 </span>
 
-                {/* Title */}
                 <Link href={`/product/${product.id}`} className='block'>
                   <h3 className='font-serif text-lg text-foreground font-normal mb-1.5 transition-colors duration-300 group-hover:text-primary line-clamp-1'>
                     {product.title}
                   </h3>
                 </Link>
 
-                {/* Description */}
                 <p className='text-xs font-light text-muted-foreground/80 leading-relaxed mb-4 line-clamp-2'>
                   {product.description}
                 </p>
 
-                {/* Footer Row */}
                 <div className='flex items-baseline justify-between pt-3 border-t border-border/60 mt-auto'>
                   <span className='text-sm font-semibold text-foreground'>
                     {formatPrice(product.price)}
@@ -192,7 +178,6 @@ export default function WishlistPage() {
                   </span>
                 </div>
 
-                {/* Add to Cart Button */}
                 <Button
                   onClick={() => handleAddToCart(product)}
                   className='w-full rounded-none mt-4 py-5 text-[10px] tracking-[0.25em] uppercase font-bold group/cart'
@@ -205,7 +190,6 @@ export default function WishlistPage() {
           ))}
         </div>
 
-        {/* Back Link */}
         <Link
           href='/shop'
           className='flex items-center gap-2 text-[10px] tracking-widest uppercase font-bold text-foreground hover:text-primary transition-colors group self-start mt-16 border-t border-border/40 pt-8'

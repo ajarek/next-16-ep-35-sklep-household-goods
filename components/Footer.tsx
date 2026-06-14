@@ -4,7 +4,6 @@ import React, { useState } from "react"
 import Link from "next/link"
 import { ArrowRight } from "lucide-react"
 
-// ─── Inline social SVGs (lucide-react doesn't export Facebook/Pinterest) ───
 function IconInstagram({ size = 16 }: { size?: number }) {
   return (
     <svg
@@ -56,7 +55,6 @@ function IconPinterest({ size = 16 }: { size?: number }) {
   )
 }
 
-// ─── Nav columns data ──────────────────────────────────────────────────────
 const navColumns = [
   {
     heading: "Kolekcje",
@@ -97,20 +95,12 @@ const navColumns = [
   },
 ]
 
-// ─── Social links ──────────────────────────────────────────────────────────
 const socials = [
   { icon: IconInstagram, href: "https://instagram.com", label: "Instagram" },
   { icon: IconFacebook, href: "https://facebook.com", label: "Facebook" },
   { icon: IconPinterest, href: "https://pinterest.com", label: "Pinterest" },
 ]
 
-/*
- * Footer uses a fixed dark surface (#1c1917 — warm near-black) that looks
- * great in BOTH light and dark themes. Text opacity tokens are applied on top
- * of white so they remain legible regardless of the host theme.
- */
-
-// ─── Newsletter form ───────────────────────────────────────────────────────
 function NewsletterForm() {
   const [email, setEmail] = useState("")
   const [sent, setSent] = useState(false)
@@ -163,7 +153,6 @@ function NewsletterForm() {
         </form>
       )}
 
-      {/* Socials */}
       <div className='flex items-center gap-4 mt-1'>
         {socials.map(({ icon: Icon, href, label }) => (
           <a
@@ -182,21 +171,13 @@ function NewsletterForm() {
   )
 }
 
-// ─── Main Footer ───────────────────────────────────────────────────────────
 export default function Footer() {
   const year = new Date().getFullYear()
 
   return (
-    /*
-     * bg-[#1c1917] — a warm charcoal that is fixed (not theme-dependent).
-     * This ensures the footer always appears dark, matching the design reference,
-     * regardless of whether the user has toggled light or dark mode.
-     */
     <footer className='w-full bg-[#1c1917]'>
-      {/* ── Top: logo + newsletter ──────────────────────────────────── */}
       <div className='max-w-[1440px] mx-auto px-6 sm:px-8 pt-16 pb-12'>
         <div className='flex flex-col md:flex-row md:items-start md:justify-between gap-10'>
-          {/* Brand block */}
           <div className='flex flex-col gap-3 max-w-xs'>
             <span className='font-serif text-2xl tracking-widest font-medium text-stone-100 transition-opacity hover:opacity-75 select-none'>
               Przytulny Domek
@@ -208,27 +189,22 @@ export default function Footer() {
             </p>
           </div>
 
-          {/* Newsletter */}
           <NewsletterForm />
         </div>
       </div>
 
-      {/* ── Thin divider ────────────────────────────────────────────── */}
       <div className='max-w-[1440px] mx-auto px-6 sm:px-8'>
         <div className='h-px bg-white/8' />
       </div>
 
-      {/* ── Nav columns ─────────────────────────────────────────────── */}
       <div className='max-w-[1440px] mx-auto px-6 sm:px-8 py-12'>
         <div className='grid grid-cols-2 md:grid-cols-4 gap-8 sm:gap-10'>
           {navColumns.map((col) => (
             <div key={col.heading} className='flex flex-col gap-4'>
-              {/* Column heading */}
               <span className='text-[9px] font-semibold uppercase tracking-[0.3em] text-stone-600 select-none'>
                 {col.heading}
               </span>
 
-              {/* Links */}
               <ul className='flex flex-col gap-2.5'>
                 {col.links.map((link) => (
                   <li key={link.label}>
@@ -247,7 +223,6 @@ export default function Footer() {
                         '
                       >
                         {link.label}
-                        {/* underline grow on hover */}
                         <span className='absolute -bottom-px left-0 h-px w-0 bg-primary transition-[width] duration-300 group-hover:w-full' />
                       </Link>
                     )}
@@ -259,7 +234,6 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* ── Bottom bar ──────────────────────────────────────────────── */}
       <div className='border-t border-white/8'>
         <div className='max-w-[1440px] mx-auto px-6 sm:px-8 py-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3'>
           <span className='text-[11px] font-light text-stone-600'>

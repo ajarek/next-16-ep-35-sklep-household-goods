@@ -13,8 +13,6 @@ import {
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
-// ─── Reusable Components ───────────────────────────────────────────────────
-
 function SectionHeading({
   eyebrow,
   title,
@@ -50,14 +48,10 @@ function SectionHeading({
   )
 }
 
-// ─── Main Page ─────────────────────────────────────────────────────────────
-
 export default function AboutPage() {
   return (
     <div className='w-full bg-background overflow-hidden'>
-      {/* ── Hero Section ─────────────────────────────────────────────── */}
       <section className='relative w-full min-h-[70vh] flex items-center justify-center px-6 sm:px-8 py-20'>
-        {/* Subtle background patterns */}
         <div className='absolute inset-0 pointer-events-none'>
           <div className='absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_50%,rgba(var(--primary-rgb),0.03),transparent_70%)]' />
           <div className='absolute top-20 right-[10%] w-[300px] h-[300px] rounded-full bg-primary/5 blur-3xl animate-pulse' />
@@ -88,7 +82,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ── Our Narrative Section ────────────────────────────────────── */}
       <section id='story' className='max-w-7xl mx-auto px-6 sm:px-8 py-24'>
         <div className='grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center'>
           <div className='relative aspect-square w-full bg-muted/30 group'>
@@ -127,7 +120,7 @@ export default function AboutPage() {
               <p>
                 Dziś współpracujemy z ponad 300 rzemieślnikami z całego świata —
                 od lokalnych garncarzy po mistrzów tkactwa. Każdy z nich
-                podziela naszą wizję "Slow Living": tworzenia przedmiotów, które
+                podziela naszą wizję &quot;Slow Living&quot;: tworzenia przedmiotów, które
                 nie tylko służą, ale stają się częścią rodzinnej historii.
               </p>
             </div>
@@ -145,7 +138,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ── Philosophy / Values ──────────────────────────────────────── */}
       <section className='bg-primary/5 py-24 px-6 sm:px-8 border-y border-border/40'>
         <div className='max-w-7xl mx-auto'>
           <SectionHeading
@@ -155,7 +147,6 @@ export default function AboutPage() {
           />
 
           <div className='grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-20 mt-16'>
-            {/* Value 1 */}
             <div className='flex flex-col items-center text-center gap-6 group'>
               <div className='w-16 h-16 rounded-full bg-background border border-primary/20 flex items-center justify-center text-primary transition-all duration-500 group-hover:bg-primary group-hover:text-primary-foreground group-hover:scale-110 shadow-sm'>
                 <Paintbrush size={24} strokeWidth={1.5} />
@@ -169,7 +160,6 @@ export default function AboutPage() {
               </p>
             </div>
 
-            {/* Value 2 */}
             <div className='flex flex-col items-center text-center gap-6 group'>
               <div className='w-16 h-16 rounded-full bg-background border border-primary/20 flex items-center justify-center text-primary transition-all duration-500 group-hover:bg-primary group-hover:text-primary-foreground group-hover:scale-110 shadow-sm'>
                 <Wind size={24} strokeWidth={1.5} />
@@ -183,7 +173,6 @@ export default function AboutPage() {
               </p>
             </div>
 
-            {/* Value 3 */}
             <div className='flex flex-col items-center text-center gap-6 group'>
               <div className='w-16 h-16 rounded-full bg-background border border-primary/20 flex items-center justify-center text-primary transition-all duration-500 group-hover:bg-primary group-hover:text-primary-foreground group-hover:scale-110 shadow-sm'>
                 <ShieldCheck size={24} strokeWidth={1.5} />
@@ -200,7 +189,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ── Artisans / Process ───────────────────────────────────────── */}
       <section className='max-w-7xl mx-auto px-6 sm:px-8 py-24'>
         <div className='grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center'>
           <div className='order-2 lg:order-1 flex flex-col gap-10'>
@@ -214,7 +202,6 @@ export default function AboutPage() {
             </div>
 
             <div className='space-y-10'>
-              {/* Step 1 */}
               <div className='flex gap-6 items-start'>
                 <div className='shrink-0 w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary text-xs font-bold'>
                   01
@@ -229,7 +216,6 @@ export default function AboutPage() {
                   </p>
                 </div>
               </div>
-              {/* Step 2 */}
               <div className='flex gap-6 items-start'>
                 <div className='shrink-0 w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary text-xs font-bold'>
                   02
@@ -244,7 +230,6 @@ export default function AboutPage() {
                   </p>
                 </div>
               </div>
-              {/* Step 3 */}
               <div className='flex gap-6 items-start'>
                 <div className='shrink-0 w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary text-xs font-bold'>
                   03
@@ -299,7 +284,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ── Stats / Numbers ──────────────────────────────────────────── */}
       <section className='w-full py-20 px-6 sm:px-8 border-t border-border/40'>
         <div className='max-w-7xl mx-auto grid grid-cols-2 lg:grid-cols-4 gap-12 text-center'>
           <div className='flex flex-col gap-2'>
@@ -329,7 +313,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ── Team Section ─────────────────────────────────────────────── */}
       <section className='py-24 px-6 sm:px-8 bg-foreground text-background'>
         <div className='max-w-7xl mx-auto flex flex-col items-center gap-16'>
           <div className='flex flex-col items-center text-center gap-4'>
@@ -371,7 +354,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ── Final CTA ────────────────────────────────────────────────── */}
       <section className='relative py-32 px-6 sm:px-8 text-center'>
         <div className='max-w-3xl mx-auto flex flex-col items-center gap-8'>
           <Sparkles
@@ -403,7 +385,6 @@ export default function AboutPage() {
           </div>
         </div>
 
-        {/* Decorative corner accents */}
         <div className='absolute top-0 left-0 w-24 h-24 border-t border-l border-primary/20' />
         <div className='absolute bottom-0 right-0 w-24 h-24 border-b border-r border-primary/20' />
       </section>

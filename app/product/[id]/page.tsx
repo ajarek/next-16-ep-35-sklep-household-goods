@@ -23,8 +23,6 @@ import { toast } from "sonner"
 import { useCartStore } from "@/store/cartStore"
 import { useWishlistStore } from "@/store/wishlistStore"
 
-// ─── Reusable Accordion Component ──────────────────────────────────────────
-
 function AccordionItem({
   title,
   children,
@@ -67,8 +65,6 @@ function AccordionItem({
   )
 }
 
-// ─── Main Component ────────────────────────────────────────────────────────
-
 export default function ProductDetailPage({
   params,
 }: {
@@ -98,7 +94,6 @@ export default function ProductDetailPage({
     )
   }
 
-  // Find related products (same category, excluding current)
   const relatedProducts = products
     .filter((p) => p.category === product.category && p.id !== product.id)
     .slice(0, 4)
@@ -122,7 +117,6 @@ export default function ProductDetailPage({
 
   return (
     <div className='w-full bg-background min-h-screen'>
-      {/* ── Breadcrumbs & Navigation ─────────────────────────────────── */}
       <div className='max-w-8xl mx-auto px-6 sm:px-8 py-8 flex items-center justify-between'>
         <div className='flex items-center gap-2 text-[10px] tracking-widest uppercase font-semibold text-muted-foreground/60'>
           <Link href='/' className='hover:text-primary transition-colors'>
@@ -150,7 +144,6 @@ export default function ProductDetailPage({
 
       <div className='max-w-8xl mx-auto px-6 sm:px-8 pb-24'>
         <div className='grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20'>
-          {/* ── Left Column: Images ───────────────────────────────────── */}
           <div className='lg:col-span-7 flex flex-col gap-6'>
             <div className='relative aspect-4/5 w-full bg-muted/30 overflow-hidden group'>
               <Image
@@ -169,7 +162,6 @@ export default function ProductDetailPage({
               )}
             </div>
 
-            {/* Grid of secondary images (placeholders using product images) */}
             <div className='grid grid-cols-2 gap-6'>
               <div className='relative aspect-square bg-muted/20 overflow-hidden group'>
                 <Image
@@ -194,7 +186,6 @@ export default function ProductDetailPage({
             </div>
           </div>
 
-          {/* ── Right Column: Info ────────────────────────────────────── */}
           <div className='lg:col-span-5 flex flex-col'>
             <div className='flex flex-col gap-4 border-b border-border/60 pb-10'>
               <span className='text-[10px] tracking-[0.3em] font-bold uppercase text-primary'>
@@ -217,9 +208,7 @@ export default function ProductDetailPage({
               </p>
             </div>
 
-            {/* Selection & Actions */}
             <div className='py-10 flex flex-col gap-8'>
-              {/* Material/Color (Visual only) */}
               <div className='flex flex-col gap-4'>
                 <span className='text-[10px] uppercase tracking-widest font-bold text-foreground'>
                   Materiał:{" "}
@@ -239,7 +228,6 @@ export default function ProductDetailPage({
                 </div>
               </div>
 
-              {/* Quantity & Add to Cart */}
               <div className='flex flex-col sm:flex-row gap-4'>
                 <div className='flex items-center border border-border/60'>
                   <button
@@ -285,7 +273,6 @@ export default function ProductDetailPage({
               </div>
             </div>
 
-            {/* Feature Badges */}
             <div className='grid grid-cols-2 gap-4 py-8 border-y border-border/40'>
               <div className='flex items-center gap-3'>
                 <Leaf size={18} className='text-primary/60' />
@@ -313,7 +300,6 @@ export default function ProductDetailPage({
               </div>
             </div>
 
-            {/* Accordions */}
             <div className='flex flex-col mt-4'>
               <AccordionItem
                 title='Szczegóły Produktu'
@@ -362,7 +348,6 @@ export default function ProductDetailPage({
               </AccordionItem>
             </div>
 
-            {/* Creative Quote */}
             <div className='mt-12 p-8 bg-primary/5 border-l-2 border-primary/40 flex flex-col gap-3 italic'>
               <p className='text-sm font-serif text-foreground/80 leading-relaxed'>
                 &ldquo;Przedmioty, którymi się otaczamy, kształtują nasz nastrój
@@ -377,7 +362,6 @@ export default function ProductDetailPage({
         </div>
       </div>
 
-      {/* ── Related Products ─────────────────────────────────────────── */}
       {relatedProducts.length > 0 && (
         <section className='bg-muted/10 py-24 px-6 sm:px-8 border-t border-border/40'>
           <div className='max-w-8xl mx-auto'>
@@ -425,7 +409,6 @@ export default function ProductDetailPage({
         </section>
       )}
 
-      {/* ── Newsletter Section ───────────────────────────────────────── */}
       <section className='py-24 px-6 sm:px-8 border-y border-border/40'>
         <div className='max-w-4xl mx-auto flex flex-col items-center text-center gap-8'>
           <div className='flex flex-col gap-3'>

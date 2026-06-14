@@ -11,7 +11,7 @@ type WishlistState = {
 
 export const useWishlistStore = create<WishlistState>()(
   persist(
-    (set, get) => ({
+    (set) => ({
       items: [],
 
       toggleWishlist: (item: Product) =>
